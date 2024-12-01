@@ -1,0 +1,18 @@
+{
+    "name": "advent-of-code-2024",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "build": "tsc",
+        "start": "sh -c 'ts-node ./src/${0}/index.ts'",
+        "make": "sh -c 'cp -r src/template` src/${0}'"
+    },
+    "devDependencies": {
+        "@types/node": "^18.11.10",
+        "typescript": "^4.9.3"
+    },
+    "dependencies": {
+        "ts-node": "^10.9.1"
+    }
+}
