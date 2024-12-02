@@ -6,7 +6,7 @@
     "scripts": {
         "build": "tsc",
         "start": "sh -c 'ts-node ./src/${0}/index.ts'",
-        "make": "sh -c 'cp -r src/template` src/${0}'"
+        "make": "sh -c 'cp -r src/template src/${0}'"
     },
     "devDependencies": {
         "@types/node": "^18.11.10",
