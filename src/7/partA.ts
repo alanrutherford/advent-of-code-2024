@@ -21,10 +21,11 @@ export default function partA(): void {
         } else {
           calibrationGuess *= calibration.numbers[j + 1];
         }
+        if (calibrationGuess > calibration.target) {
+          break;
+        }
       }
-      if (calibrationGuess > calibration.target) {
-        return false;
-      }
+
       if (calibrationGuess === calibration.target) {
         return true;
       }
@@ -43,7 +44,5 @@ export default function partA(): void {
     .filter(evaluate)
     .reduce((a, b) => a + b.target, 0);
 
-  console.log(input);
-
-  console.log(`Part A: `);
+  console.log(`Part A: ${input} => ${input == 2664460013123}`);
 }
