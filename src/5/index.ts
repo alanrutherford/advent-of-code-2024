@@ -24,7 +24,6 @@ export default function run(): void {
         return false;
       }
     }
-    // console.log("in order");
     return true;
   };
   const reorderUpdate = (updateToReorder: number[]) => {
@@ -45,7 +44,6 @@ export default function run(): void {
               rule
             );
             j = -1;
-            // console.log("restarting loop");
             break;
           }
         }
