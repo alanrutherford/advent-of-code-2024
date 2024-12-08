@@ -22,6 +22,9 @@ export default function partA(): void {
           calibrationGuess *= calibration.numbers[j + 1];
         }
       }
+      if (calibrationGuess > calibration.target) {
+        return false;
+      }
       if (calibrationGuess === calibration.target) {
         return true;
       }
