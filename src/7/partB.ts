@@ -52,5 +52,5 @@ export default function partB(): void {
     .filter(evaluateTrinary)
     .reduce((a, b) => a + b.target, 0);
 
-  console.log(`Part B: ${input} => ${input === 426214131924213}`);
+  console.log(`Part B: ${input} `);
 }

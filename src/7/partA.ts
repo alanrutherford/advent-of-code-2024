@@ -44,5 +44,5 @@ export default function partA(): void {
     .filter(evaluate)
     .reduce((a, b) => a + b.target, 0);
 
-  console.log(`Part A: ${input} => ${input == 2664460013123}`);
+  console.log(`Part A: ${input} `);
 }
