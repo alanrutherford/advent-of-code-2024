@@ -1,12 +1,10 @@
-import { readFileSync } from "fs";
 import { join } from "path";
-function syncReadFile(filename: string) {
-  const result = readFileSync(join(__dirname, filename), "utf-8");
-  return result;
-}
+const readFile = async (filename: string) => {
+  return Bun.file(join(__dirname, filename)).text();
+};
 
-export default function partB(): void {
-  const input = syncReadFile("./input.txt");
+export const partB = async (): Promise<void> => {
+  const input = await readFile("./input.txt");
 
   console.log(`Part B:`);
-}
+};

@@ -1,9 +1,8 @@
-import { readFileSync } from "fs";
 import { join } from "path";
-function syncReadFile(filename: string) {
-  const result = readFileSync(join(__dirname, filename), "utf-8");
-  return result;
-}
+
+const syncReadFile = async (filename: string) => {
+  return Bun.file(join(__dirname, filename)).text();
+};
 
 type Location = {
   x: number;
@@ -13,8 +12,8 @@ type Cursor = {
   position: Location;
   direction: "N" | "S" | "E" | "W";
 };
-export default function partB(): void {
-  const input = syncReadFile("./input.txt")
+export default async function partB(): Promise<any> {
+  const input = (await syncReadFile("./input.txt"))
     .split("\n")
     .map((line) => line.split(""));
 
@@ -126,11 +125,12 @@ export default function partB(): void {
   const doMaze = () => {
     let steps = 0;
     cursor = { ...initCursor };
+    const uniquePositionsWithDir = new Set<string>();
+
     while (isInBounds(cursor.position)) {
       // add `x:${x}y:${y} to set for unique positions
-      const stringifiedPos = `x:${cursor.position.x}y:${cursor.position.y}`;
+      const stringifiedPos = `x:${cursor.position.x}y:${cursor.position.y}:${cursor.direction}`;
 
-      uniquePositions.add(stringifiedPos);
       while (facingBlock()) {
         rotateRight();
       }
@@ -138,14 +138,19 @@ export default function partB(): void {
         break;
       }
       steps++;
-      if (steps > 50000) {
+      if (uniquePositionsWithDir.has(stringifiedPos)) {
+        // return true;
+      } else {
+        uniquePositionsWithDir.add(stringifiedPos);
+      }
+      if (steps > 10000) {
         //must be a loop
         return true;
       }
     }
     return false;
   };
-  const uniquePositions = new Set<string>();
+  // const uniquePositions = new Set<string>();
   for (let i = 0; i < input.length; i++) {
     for (let j = 0; j < input[i].length; j++) {
       if (input[i][j] === "#") {
@@ -159,5 +164,6 @@ export default function partB(): void {
     }
   }
 
-  console.log(`Part B: ${newBlocks.size}`);
+  console.log(`Part B: ${newBlocks.size} ${newBlocks.size === 1424}`);
+  return;
 }

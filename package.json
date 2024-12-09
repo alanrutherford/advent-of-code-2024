@@ -2,17 +2,17 @@
     "name": "advent-of-code-2024",
     "version": "1.0.0",
     "main": "index.js",
+    "devDependencies": {
+        "@types/bun": "^1.1.14",
+        "typescript": "^4.9.3"
+    },
     "license": "MIT",
     "scripts": {
         "build": "tsc",
-        "start": "sh -c 'ts-node ./src/${0}/index.ts'",
+        "start": "sh -c 'bun ./src/${0}/index.ts'",
         "make": "sh -c 'cp -r src/template src/${0}'"
     },
-    "devDependencies": {
-        "@types/node": "^18.11.10",
-        "typescript": "^4.9.3"
-    },
     "dependencies": {
-        "ts-node": "^10.9.1"
+        "bun-types": "^1.1.38"
     }
 }
