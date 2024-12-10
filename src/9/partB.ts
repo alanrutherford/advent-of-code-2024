@@ -46,15 +46,6 @@ export const partB = async (): Promise<void> => {
           const replacement = chunks[j];
           fileIdIndex = Number(chunks[j][0]);
           chunks[j] = new Array(chunks[j].length).fill(".");
-          // merge blank chunks if the new blank chunk is next to some blanks
-          if (j < chunks.length - 1 && chunks[j + 1][0] === ".") {
-            chunks[j] = [...chunks[j], ...chunks[j + 1]];
-            chunks.splice(j + 1, 1);
-          }
-          if (chunks[j - 1][0] === ".") {
-            chunks[j] = [...chunks[j], ...chunks[j - 1]];
-            chunks.splice(j - 1, 1);
-          }
 
           if (chunks[i].length - replacement.length > 0) {
             chunks.splice(
