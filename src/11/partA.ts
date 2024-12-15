@@ -16,7 +16,7 @@ export const partA = async (): Promise<void> => {
         let length = Math.floor(Math.log10(input[j]) + 1);
         let divisor = Math.pow(10, length / 2);
         let thing1 = Math.floor(input[j] / divisor);
-        let thing2 = input[j] - Math.floor(thing1) * Math.pow(10, length / 2);
+        let thing2 = input[j] - Math.floor(thing1) * divisor;
         input.splice(j, 1, [thing1, thing2]);
       } else {
         input[j] *= 2024;
